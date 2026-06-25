@@ -1,0 +1,36 @@
+-- server/schema.sql
+
+-- Users Table
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    hashed_password TEXT NOT NULL,
+    salt TEXT NOT NULL
+);
+
+-- Matches Table
+CREATE TABLE IF NOT EXISTS matches (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    difficulty TEXT CHECK(difficulty IN ('Easy', 'Intermediate', 'Hard')) NOT NULL,
+    outcome TEXT CHECK(outcome IN ('won', 'lost')) NOT NULL,
+    tournament_code TEXT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Seed Users
+INSERT INTO users (username, hashed_password, salt) VALUES 
+('Alice_Player', 'hashed_pw_placeholder_1', 'salt_placeholder_1'),
+('Bob_The_Builder', 'hashed_pw_placeholder_2', 'salt_placeholder_2'),
+('Charlie_Newbie', 'hashed_pw_placeholder_3', 'salt_placeholder_3');
+
+-- Seed Matches
+INSERT INTO matches (user_id, difficulty, outcome) VALUES 
+(1, 'Easy', 'won'),
+(1, 'Easy', 'won'),
+(1, 'Intermediate', 'lost'),
+(1, 'Hard', 'won'),
+(2, 'Easy', 'lost'),
+(2, 'Intermediate', 'won'),
+(2, 'Intermediate', 'lost');
