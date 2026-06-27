@@ -78,15 +78,15 @@ export const generateGameGrid = (gridSize, shipsConfig) => {
 export const getDifficultyConfig = (difficulty) => {
     switch (difficulty) {
         case 'Easy':
-            // E.g., 5x5 grid, 4 ships, 15 torpedoes
-            return { gridSize: 5, ships: [4, 3, 2, 2], maxTorpedoes: 15 };
+            // 8x8 grid provides plenty of space for these ships
+            return { gridSize: 8, ships: [4, 3, 2, 2], maxTorpedoes: 35 };
         case 'Intermediate':
-            // E.g., 10x10 grid, 7 ships, 40 torpedoes
-            return { gridSize: 10, ships: [5, 4, 3, 3, 2, 2, 2], maxTorpedoes: 40 };
+            // 10x10 grid is standard Battleship size
+            return { gridSize: 10, ships: [5, 4, 3, 3, 2, 2, 2], maxTorpedoes: 55 };
         case 'Hard':
-            // E.g., 15x15 grid, 10 ships, 75 torpedoes
-            return { gridSize: 15, ships: [5, 5, 4, 4, 3, 3, 3, 2, 2, 2], maxTorpedoes: 75 };
+            // 12x12 grid for the largest fleet
+            return { gridSize: 12, ships: [5, 5, 4, 4, 3, 3, 3, 2, 2, 2], maxTorpedoes: 80 };
         default:
-            return { gridSize: 5, ships: [4, 3, 2, 2], maxTorpedoes: 15 }; // Default Easy
+            return { gridSize: 8, ships: [4, 3, 2, 2], maxTorpedoes: 35 }; 
     }
 };
