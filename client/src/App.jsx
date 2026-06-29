@@ -2,27 +2,27 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Login';
+import Navbar from './Navbar';
 
 export default function App() {
     const [loggedInUser, setLoggedInUser] = useState(null);
 
     return (
         <BrowserRouter>
-            <div>
-                {/* We will add a Navigation Bar here later */}
+            <div style={{ margin: 0, padding: 0, fontFamily: 'sans-serif' }}>
+                {/* The Navbar sits outside the Routes so it always shows up */}
+                <Navbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
                 
                 <Routes>
-                    {/* The main route: If logged in, show the game. If not, redirect to login */}
                     <Route 
                         path="/" 
                         element={
                             loggedInUser 
-                                ? <h2 style={{textAlign: 'center', marginTop: '50px'}}>Welcome to Battleship, {loggedInUser.username}! (Game Board coming soon)</h2> 
+                                ? <h2 style={{textAlign: 'center', marginTop: '50px'}}>Welcome to Battleship! (Game Board coming soon)</h2> 
                                 : <Navigate to="/login" />
                         } 
                     />
                     
-                    {/* The login route */}
                     <Route 
                         path="/login" 
                         element={<Login setLoggedInUser={setLoggedInUser} />} 
