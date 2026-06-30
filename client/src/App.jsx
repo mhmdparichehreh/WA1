@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Login';
 import Navbar from './Navbar';
 import GameBoard from './GameBoard';
+import Dashboard from './Dashboard';
 
 export default function App() {
     const [loggedInUser, setLoggedInUser] = useState(null);
@@ -14,6 +15,14 @@ export default function App() {
                 <Navbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
                 
                 <Routes>
+			<Route 
+                     path="/dashboard" 
+                     element={
+                         loggedInUser 
+                             ? <Dashboard loggedInUser={loggedInUser} />
+                             : <Navigate to="/login" /> } 
+                 	/>
+
                     <Route 
                         path="/" 
                         element={

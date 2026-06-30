@@ -37,21 +37,20 @@ export default function Navbar({ loggedInUser, setLoggedInUser }) {
             
             {loggedInUser && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                    <span>Playing as: <strong>{loggedInUser.username}</strong></span>
-                    <button 
-                        onClick={handleLogout}
-                        style={{ 
-                            padding: '8px 15px', 
-                            backgroundColor: '#dc3545', 
-                            color: 'white', 
-                            border: 'none', 
-                            cursor: 'pointer',
-                            borderRadius: '4px'
-                        }}
-                    >
-                        Log Out
-                    </button>
-                </div>
+                 <span>Playing as: <strong>{loggedInUser.username}</strong></span>
+                 <button 
+                     onClick={() => navigate('/dashboard')}
+                     style={{ padding: '8px 15px', backgroundColor: '#ffc107', color: 'black', border: 'none', cursor: 'pointer', borderRadius: '4px' }}
+                 >
+                     Dashboard
+                 </button>
+                 <button 
+                     onClick={handleLogout}
+                     style={{ padding: '8px 15px', backgroundColor: '#dc3545', color: 'white', border: 'none', cursor: 'pointer', borderRadius: '4px' }}
+                 >
+                     Log Out
+                 </button>
+             	</div>
             )}
         </nav>
     );
