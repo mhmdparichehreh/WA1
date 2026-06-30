@@ -18,7 +18,7 @@ export default function App() {
                         path="/" 
                         element={
                             loggedInUser 
-                                ? <GameBoard loggedInUser={loggedInUser} />  {/* <-- Use it here! */}
+                                ? <GameBoard loggedInUser={loggedInUser} /> 
                                 : <Navigate to="/login" />
                         } 
                     />
